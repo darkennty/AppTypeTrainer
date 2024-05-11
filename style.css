@@ -1,0 +1,155 @@
+body > div {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+[name='main'] > button {
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    flex: 1 1 33%;
+}
+
+.menu .selection {
+    width: 20%;
+}
+
+.menu .radio {
+    width: 20%;
+}
+
+.menu > div > label {
+    font-size: 1.1rem;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+h1, button {
+    margin: 10px;
+}
+
+.checkboxes {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    flex-basis: 200px;
+}
+
+.checkboxes > div {
+    /* flex: 100px; */
+    flex-basis: 100px;
+}
+
+.symbols {
+    width: 40%;
+    height: 8rem;
+}
+
+.symbols > div {
+    justify-content: flex-end;
+}
+
+
+.non-foreign > :nth-child(1) > label::before {
+    content: "ва ол";
+}
+.non-foreign > :nth-child(2) > label::before {
+    content: "фы дж";
+}
+.non-foreign > :nth-child(3) > label::before {
+    content: "ми ть";
+}
+.non-foreign > :nth-child(4) > label::before {
+    content: "еп нр";
+}
+.non-foreign > :nth-child(5) > label::before {
+    content: "ук гш";
+}
+.non-foreign > :nth-child(6) > label::before {
+    content: "чс бю";
+}
+.non-foreign > :nth-child(7) > label::before {
+    content: "йц щз";
+}
+.non-foreign > :nth-child(8) > label::before {
+    content: "я эхъ";
+}
+
+
+
+.foreign > :nth-child(1) > label::before {
+    content: "df jk";
+}
+.foreign > :nth-child(2) > label::before {
+    content: "as l;";
+}
+.foreign > :nth-child(3) > label::before {
+    content: "vb nm";
+}
+.foreign > :nth-child(4) > label::before {
+    content: "tg yh";
+}
+.foreign > :nth-child(5) > label::before {
+    content: "er ui";
+}
+.foreign > :nth-child(6) > label::before {
+    content: "qw op";
+}
+.foreign > :nth-child(7) > label::before {
+    content: "xc ,.";
+}
+.foreign > :nth-child(8) > label::before {
+    content: "z ! ? /";
+}
+
+.field {
+    border: 2px solid black;
+    border-left: none;
+    width: 50%;
+    text-align: left;
+    overflow: hidden;
+}
+
+.space {
+    border: 2px solid black;
+    border-right: none;
+    background-color: #e3e6e9;
+    width: 50%;
+    text-align: right;
+}
+
+.play {
+    /* height: 21.6px; */
+    display: flex;
+    flex-direction: row;
+    white-space: pre;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    box-sizing: border-box;
+}
+
+p {
+    display: inline;
+    /* display: inline; */
+}
+
+.error {
+    color: red;
+    font-size: 1.1em;
+    margin: 5px;
+}
+
+.finish {
+    color: gray;
+}
