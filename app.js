@@ -1,14 +1,19 @@
 const appTypeTrainer = (elemID) => {
-    const wrapper = document.getElementById(elemID);
+    const container = document.getElementById(elemID);
+    
+    const wrapper = document.createElement('div');
+    wrapper.setAttribute('id', 'appTT');
+    container.append(wrapper);
+
     const menuContainer = document.createElement('div');
     menuContainer.classList.add("menu-container");
 
-    // wrapper.parentElement.previousElementSibling.insertAdjacentHTML(
-    //     "beforeend",
-    //     `<link rel="preconnect" href="https://fonts.googleapis.com">
-    //     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    //     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">`
-    // );
+    document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">`
+    );
 
     wrapper.append(menuContainer);
 
@@ -423,11 +428,13 @@ const appTypeTrainer = (elemID) => {
             }
         }
 
-        window.addEventListener('keydown', (e) => {
-            if (e.key === ' ' && e.target === document.body) {
-              e.preventDefault();
+        const spaceBlock = (event) => {
+            if (event.key === ' ' && event.target === document.body) {
+              event.preventDefault();
             }
-        });
+        }
+
+        window.addEventListener('keydown', spaceBlock);
 
         document.addEventListener("keyup", enterFunc);
 
@@ -533,12 +540,19 @@ const appTypeTrainer = (elemID) => {
             document.removeEventListener("keyup", type);
             document.removeEventListener("keyup", enterFunc);
             document.removeEventListener("keyup", restart);
+            window.removeEventListener('keydown', spaceBlock);
             playContainer.remove();
             drawGame();
         });
 
         btnMainMenu.addEventListener("click" , function (event) {
-            location.reload();
+            document.removeEventListener("keyup", restart);
+            document.removeEventListener("keyup", type);
+            document.removeEventListener("keyup", enterFunc);
+            window.removeEventListener('keydown', spaceBlock);
+            menuContainer.remove();
+            playContainer.remove();
+            appTypeTrainer("appTT");
         });
         
         const restart = (event) => {

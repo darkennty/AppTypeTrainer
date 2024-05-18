@@ -4,10 +4,11 @@
     color: #363636;
     font-family: "Roboto Mono", monospace;
     height: 263.8px;
+    font-size: 16px;
 }
 
-.menu-container,
-.game-container {
+#appTT .menu-container,
+#appTT .game-container {
     margin: auto;
     width: 50%;
 }
@@ -30,27 +31,28 @@
 	color: #eeeeee;
 }
 
-.menu {
+#appTT .menu {
     display: flex;
     justify-content: center;
 }
 
-.menu .selection,
-.menu .radio {
+#appTT .menu .selection,
+#appTT .menu .radio {
     width: 20%;
 }
 
-.menu > div > label {
+#appTT .menu > div > label {
     font-size: 1.1rem;
     display: inline-block;
     margin-bottom: 5px;
 }
 
-.headline {
+#appTT .headline {
+    text-align: center;
     margin: 5px;
 }
 
-.checkboxes {
+#appTT .checkboxes {
     width: 80%;
     display: flex;
     flex-wrap: wrap;
@@ -60,16 +62,16 @@
     flex-basis: 200px;
 }
 
-.checkboxes > div {
+#appTT .checkboxes > div {
     flex-basis: 100px;
 }
 
-.symbols {
+#appTT .symbols {
     height: 170.2px;
     width: 40%;
 }
 
-.symbols > div {
+#appTT .symbols > div {
     justify-content: flex-end;
 }
 
@@ -128,7 +130,7 @@
 
 
 
-.field {
+#appTT .field {
     border: 2px solid black;
     border-left: none;
     width: 50%;
@@ -136,7 +138,7 @@
     overflow: hidden;
 }
 
-.space {
+#appTT .space {
     border: 2px solid black;
     border-right: none;
     background-color: #e3e6e9;
@@ -144,7 +146,7 @@
     text-align: right;
 }
 
-.play {
+#appTT .play {
     display: flex;
     flex-direction: row;
     white-space: pre;
@@ -155,11 +157,11 @@
 }
 
 
-.game-container p {
+#appTT .game-container p {
     display: inline;
 }
 
-.game-container .time {
+#appTT .game-container .time {
     margin: 10px 0;
     display: inline-block;
 }
@@ -174,16 +176,16 @@
     margin-right: auto;
 }
 
-.error {
+#appTT .error {
     color: red;
     font-size: 1.1em;
     margin: 5px;
 }
 
-.start {
+#appTT .start {
     color: rgb(43, 43, 43);
 }
 
-.finish {
+#appTT .finish {
     color: gray;
 }
