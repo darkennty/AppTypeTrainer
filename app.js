@@ -231,8 +231,6 @@ const appTypeTrainer = (elemID) => {
         const playContainer = document.createElement('div');
         wrapper.append(playContainer);
         playContainer.classList.add("game-container");
-
-        // const colors = ["red", "yellow", "green", "deepskyblue", "purple"];
     
         const ru_1 = ['в', 'а', 'о', 'л', ' '];
         const ru_2 = ['ф', 'ы', 'д', 'ж', ' '];
@@ -420,7 +418,7 @@ const appTypeTrainer = (elemID) => {
                     string.insertAdjacentHTML(
                         "beforeend",
                         `<span class="symbol" id="${symbols[rand]}">${symbols[rand]}</span>`
-                    ); // ${colors[rand]}
+                    );
                 }
                 document.removeEventListener("keyup", enterFunc);
                 document.addEventListener("keyup", type);
@@ -509,7 +507,7 @@ const appTypeTrainer = (elemID) => {
                 string.insertAdjacentHTML(
                     "beforeend",
                     `<span class="symbol" id="${symbols[rand]}">${symbols[rand]}</span>`
-                ); // ${colors[rand]}
+                );
 
                 symbolCount += 1;
             }
