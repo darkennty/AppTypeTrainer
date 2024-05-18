@@ -12,7 +12,7 @@ const appTypeTrainer = (elemID) => {
     mainMenu.classList.add('menu');
     
     const mainForm = document.createElement('form');
-    // mainForm.setAttribute('action', '');
+    mainForm.setAttribute('action', '');
 	mainForm.setAttribute('name', 'main');
 
     
@@ -80,13 +80,18 @@ const appTypeTrainer = (elemID) => {
     checkboxes.append(checkbox1Div, checkbox2Div, checkbox3Div, checkbox4Div, checkbox5Div, checkbox6Div, checkbox7Div, checkbox8Div)
     
     const boxes = document.querySelectorAll(`.checkboxes input`);
+    const labels = document.querySelectorAll(`.checkboxes label`)
     
-    let i = 1;
-    for (let checkbox of boxes) {
+    for (let i = 1; i <= boxes.length; i ++) {
+        const checkbox = boxes[i-1];
         checkbox.setAttribute('type', 'checkbox');
         checkbox.setAttribute('name', 'nameCheck');
         checkbox.setAttribute('id', `cb_${i}`);
-        i += 1;
+    }
+
+    for (let i = 1; i <= labels.length; i ++) {
+        const label = labels[i-1];
+        label.setAttribute("for", `cb_${i}`);  
     }
     
     language.addEventListener("change", function (event) {
@@ -125,13 +130,18 @@ const appTypeTrainer = (elemID) => {
     mainMenu.append(time);
     
     const radioBtns = document.querySelectorAll(`.radio input`);
+    const radioLabels = document.querySelectorAll(`.radio div label`);
     
-    i = 1;
-    for (let radio of radioBtns) {
+    for (let i = 1; i <= radioBtns.length; i++) {
+        const radio = radioBtns[i - 1];
         radio.setAttribute('type', 'radio');
         radio.setAttribute('name', 'nameRadio');
         radio.setAttribute('id', `radio_${i}`);
-        i += 1;
+    }
+
+    for (let i = 1; i < radioLabels.length; i++) {
+        const label = radioLabels[i - 1];
+        label.setAttribute('for', `radio_${i}`);
     }
 
 
@@ -215,23 +225,23 @@ const appTypeTrainer = (elemID) => {
 
         // const colors = ["red", "yellow", "green", "deepskyblue", "purple"];
     
-        const ru_1 = ['в', 'а', 'о', 'л'];
-        const ru_2 = ['ф', 'ы', 'д', 'ж'];
-        const ru_3 = ['м', 'и', 'т', 'ь'];
-        const ru_4 = ['е', 'п', 'н', 'р'];
-        const ru_5 = ['у', 'к', 'г', 'ш'];
-        const ru_6 = ['ч', 'с', 'б', 'ю'];
-        const ru_7 = ['й', 'ц', 'щ', 'з'];
-        const ru_8 = ['я', 'э', 'х', 'ъ'];
+        const ru_1 = ['в', 'а', 'о', 'л', ' '];
+        const ru_2 = ['ф', 'ы', 'д', 'ж', ' '];
+        const ru_3 = ['м', 'и', 'т', 'ь', ' '];
+        const ru_4 = ['е', 'п', 'н', 'р', ' '];
+        const ru_5 = ['у', 'к', 'г', 'ш', ' '];
+        const ru_6 = ['ч', 'с', 'б', 'ю', ' '];
+        const ru_7 = ['й', 'ц', 'щ', 'з', ' '];
+        const ru_8 = ['я', 'э', 'х', 'ъ', ' '];
     
-        const en_1 = ['d', 'f', 'j', 'k'];
-        const en_2 = ['a', 's', 'l', ';'];
-        const en_3 = ['v', 'b', 'n', 'm'];
-        const en_4 = ['t', 'g', 'y', 'h'];
-        const en_5 = ['e', 'r', 'u', 'i'];
-        const en_6 = ['q', 'w', 'o', 'p'];
-        const en_7 = ['x', 'c', ',', '.'];
-        const en_8 = ['z', '!', '?', '/'];
+        const en_1 = ['d', 'f', 'j', 'k', ' '];
+        const en_2 = ['a', 's', 'l', ';', ' '];
+        const en_3 = ['v', 'b', 'n', 'm', ' '];
+        const en_4 = ['t', 'g', 'y', 'h', ' '];
+        const en_5 = ['e', 'r', 'u', 'i', ' '];
+        const en_6 = ['q', 'w', 'o', 'p', ' '];
+        const en_7 = ['x', 'c', ',', '.', ' '];
+        const en_8 = ['z', '!', '?', '/', ' '];
     
 
         const langSelect = document.querySelector('select');
@@ -323,8 +333,6 @@ const appTypeTrainer = (elemID) => {
                 }
             }
         }
-
-        symbols.unshift(' ');
     
         function getRandomInt(max) {
             return Math.floor(Math.random() * Math.floor(max));
@@ -360,7 +368,7 @@ const appTypeTrainer = (elemID) => {
         
         
         let doubleSpaceCheck = false;
-
+        
         const enterFunc = (event) => {
             if (event.code == "Enter") {
                 
@@ -424,8 +432,7 @@ const appTypeTrainer = (elemID) => {
                 if (event.key == elements[0].id) {
                     elements = document.querySelectorAll("[type='radio']");
                     if (elements[0].checked == true) {
-                        // deadline = 60;
-                        deadline = 5;
+                        deadline = 60;
                     } else if (elements[1].checked == true) {
                         deadline = 120;
                     } else {
@@ -450,7 +457,6 @@ const appTypeTrainer = (elemID) => {
 
                         playContainer.prepend(timeText);
                         if (finalTime >= deadline) {
-                            // playContainer.style.display = "none";
                             clearInterval(interval);
 
                             document.removeEventListener("keyup", type);
