@@ -3,12 +3,12 @@ const appTypeTrainer = (elemID) => {
     const menuContainer = document.createElement('div');
     menuContainer.classList.add("menu-container");
 
-    wrapper.parentElement.previousElementSibling.insertAdjacentHTML(
-        "beforeend",
-        `<link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">`
-    );
+    // wrapper.parentElement.previousElementSibling.insertAdjacentHTML(
+    //     "beforeend",
+    //     `<link rel="preconnect" href="https://fonts.googleapis.com">
+    //     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    //     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">`
+    // );
 
     wrapper.append(menuContainer);
 
@@ -210,8 +210,6 @@ const appTypeTrainer = (elemID) => {
         if (radioCheck.length != 0) {
             flag2 = true;
         } else {
-            console.log(timeRadio.nextElementSibling);
-
             timeRadio.insertAdjacentHTML(
                 "afterend",
                 `<div class="error">
@@ -425,6 +423,12 @@ const appTypeTrainer = (elemID) => {
             }
         }
 
+        window.addEventListener('keydown', (e) => {
+            if (e.key === ' ' && e.target === document.body) {
+              e.preventDefault();
+            }
+        });
+
         document.addEventListener("keyup", enterFunc);
 
         let startTime;
@@ -486,8 +490,9 @@ const appTypeTrainer = (elemID) => {
                 }
             }
 
+            
             let elements = document.querySelectorAll(".symbol");
-            if (event.key == elements[0].id) {
+            if (event.key == elements[0].id) {                 
                 elements[0].remove();
                 let rand = getRandomInt(symbols.length);
 
