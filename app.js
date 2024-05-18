@@ -1,11 +1,20 @@
 const appTypeTrainer = (elemID) => {
     const wrapper = document.getElementById(elemID);
     const menuContainer = document.createElement('div');
+    menuContainer.classList.add("menu-container");
+
+    wrapper.parentElement.previousElementSibling.insertAdjacentHTML(
+        "beforeend",
+        `<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">`
+    );
 
     wrapper.append(menuContainer);
 
     const mainMenuH1 = document.createElement('h1');
     mainMenuH1.append("Тренажёр слепой печати");
+    mainMenuH1.classList.add('headline');
     menuContainer.append(mainMenuH1);
 
     const mainMenu = document.createElement('div');
@@ -155,9 +164,9 @@ const appTypeTrainer = (elemID) => {
         }
     }, {"once": true});
     
-    const startButton = document.createElement('button');
-    startButton.append("Начать тренировку");
-    startButton.setAttribute("type", "submit");
+    const gameButton = document.createElement('button');
+    gameButton.append("Начать тренировку");
+    gameButton.setAttribute("type", "submit");
     
     
     symbolSelection.addEventListener("change", function (event) {
@@ -171,7 +180,7 @@ const appTypeTrainer = (elemID) => {
     });
     
     mainForm.append(mainMenu);
-    mainForm.append(startButton);
+    mainForm.append(gameButton);
     
     mainForm.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -185,7 +194,6 @@ const appTypeTrainer = (elemID) => {
         if (cbCheck.length != 0) {
             flag1 = true;
         } else {
-            console.log(checkboxes.nextElementSibling);
             checkboxes.insertAdjacentHTML(
                 "afterend",
                 `<div class="error">
@@ -222,6 +230,7 @@ const appTypeTrainer = (elemID) => {
 
         const playContainer = document.createElement('div');
         wrapper.append(playContainer);
+        playContainer.classList.add("game-container");
 
         // const colors = ["red", "yellow", "green", "deepskyblue", "purple"];
     
@@ -340,6 +349,7 @@ const appTypeTrainer = (elemID) => {
 
         const startTimeText = document.createElement('p');
         startTimeText.append(`Время: 00:00`);
+        startTimeText.classList.add('time');
         playContainer.append(startTimeText);
         
         const playDiv = document.createElement('div');
@@ -379,7 +389,7 @@ const appTypeTrainer = (elemID) => {
 
                 space.insertAdjacentHTML(
                     "beforeend",
-                    `<span class="start">"Shift + R" - начать заново</span>`
+                    `<span class="start">"Escape" - начать заново</span>`
                 );
                 spaceDiv.style.textAlign = "center";
                 spaceDiv.append(space);
@@ -446,6 +456,7 @@ const appTypeTrainer = (elemID) => {
                         let finalTime = endTime - startTime;
 
                         const timeText = document.createElement('p');
+                        timeText.classList.add('time');
                         finalTime = Math.floor(finalTime / 1000);
 
                         timeText.append(`Время: 0${parseInt(finalTime / 60)}`);
@@ -467,7 +478,7 @@ const appTypeTrainer = (elemID) => {
                             const countText = document.createElement('p');
                             countText.append(`Набрано символов: ${symbolCount} зн.`);
                             const speedText = document.createElement('p');
-                            speedText.append(`Скорость печати: ${typingSpeed} зн/мин`);
+                            speedText.append(`Скорость печати: ${typingSpeed.toFixed(0)} зн/мин`);
 
                             playContainer.append(document.createElement('br'), countText, document.createElement('br'), speedText, document.createElement('br'));
                         }
@@ -506,8 +517,11 @@ const appTypeTrainer = (elemID) => {
 
 
         const btnRepeat = document.createElement('button');
+        btnRepeat.classList.add('btn-repeat');
         btnRepeat.append("Начать заново");
         const btnMainMenu = document.createElement('button');
+        btnMainMenu.classList.add('btn-main-menu');
+
         btnMainMenu.append("Выйти в меню");
         
         playContainer.append(btnRepeat, btnMainMenu);
@@ -525,7 +539,7 @@ const appTypeTrainer = (elemID) => {
         });
         
         const restart = (event) => {
-            if (event.code == 'KeyR' && (event.shiftKey)) {
+            if (event.key === "Escape") {
                 document.removeEventListener("keyup", restart);
                 document.removeEventListener("keyup", type);
                 document.removeEventListener("keyup", enterFunc);
