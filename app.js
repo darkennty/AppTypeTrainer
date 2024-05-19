@@ -38,6 +38,7 @@ const appTypeTrainer = (elemID) => {
     languageLabel.append('Выберите язык:')
     
     const language = document.createElement('select');
+    language.classList.add('select-list');
     const langRU = document.createElement('option');
     langRU.append('Русский');
     const langEN = document.createElement('option');
@@ -254,7 +255,7 @@ const appTypeTrainer = (elemID) => {
         const en_8 = ['z', '!', '?', '/', ' '];
     
 
-        const langSelect = document.querySelector('select');
+        const langSelect = document.querySelector('.select-list');
         const selectedOptionIndex = langSelect.selectedIndex;
         let symbols = new Array();
 
@@ -550,9 +551,9 @@ const appTypeTrainer = (elemID) => {
             document.removeEventListener("keyup", type);
             document.removeEventListener("keyup", enterFunc);
             window.removeEventListener('keydown', spaceBlock);
-            menuContainer.remove();
-            playContainer.remove();
-            appTypeTrainer("appTT");
+            
+            wrapper.remove();
+            appTypeTrainer(elemID);
         });
         
         const restart = (event) => {
@@ -560,6 +561,8 @@ const appTypeTrainer = (elemID) => {
                 document.removeEventListener("keyup", restart);
                 document.removeEventListener("keyup", type);
                 document.removeEventListener("keyup", enterFunc);
+                window.removeEventListener('keydown', spaceBlock);
+
                 playContainer.remove();
                 drawGame();
             }
