@@ -444,8 +444,10 @@ const appTypeTrainer = (elemID) => {
 
         let flag = true;
         let symbolCount = 0;
+        let mistakesCount = 0;
 
         const type = (event) => {
+            let elements = document.querySelectorAll(".symbol");
             if (flag) {
                 let elements = document.querySelectorAll(".symbol");
 
@@ -479,28 +481,41 @@ const appTypeTrainer = (elemID) => {
                         playContainer.prepend(timeText);
                         if (finalTime >= deadline) {
                             clearInterval(interval);
-
+                            
                             document.removeEventListener("keyup", type);
 
-                            spaceDiv.classList.add("finish");
                             stringDiv.classList.add("finish");
+
+                            const lastLetter = document.querySelector(".finish > p > .symbol")
+                            lastLetter.classList.remove("error-letter");
+                            lastLetter.classList.remove("error-space");
+
                             const typingSpeed = symbolCount / (deadline / 60);
                             const countText = document.createElement('p');
                             countText.append(`Набрано символов: ${symbolCount} зн.`);
                             const speedText = document.createElement('p');
                             speedText.append(`Скорость печати: ${typingSpeed.toFixed(0)} зн/мин`);
+                            const mistakesText = document.createElement('p');
+                            mistakesText.append(`Количество допущенных ошибок: ${mistakesCount} зн.`);
 
-                            playContainer.append(document.createElement('br'), countText, document.createElement('br'), speedText, document.createElement('br'));
+                            playContainer.append(document.createElement('br'), countText, document.createElement('br'), speedText, document.createElement('br'), mistakesText, document.createElement('br'));
                         }
 
                     }, 1000);
                     flag = false;
                 }
+            } else {
+                if (event.key != elements[0].id && elements[0].id == ' ') {
+                    elements[0].classList.add("error-space");
+                    mistakesCount += 1;
+                } else if (event.key != elements[0].id) {
+                    elements[0].classList.add("error-letter");
+                    mistakesCount += 1;
+                }
             }
 
             
-            let elements = document.querySelectorAll(".symbol");
-            if (event.key == elements[0].id) {                 
+            if (event.key == elements[0].id) {
                 elements[0].remove();
                 let rand = getRandomInt(symbols.length);
 
